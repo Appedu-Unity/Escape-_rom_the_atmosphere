@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Camera : MonoBehaviour
 {
-   [Header("追蹤物件")]
+    [Header("追蹤物件")]
     public Transform target;
     [Header("移動速度")]
     public float speed = 2;
@@ -19,10 +19,10 @@ public class Camera : MonoBehaviour
     /// </summary>
     private void Track()
     {   
-        Vector3 posA = target.position;     // 目標座標
-        Vector3 posB = transform.position;  // 攝影機座標
+        Vector2 posA = target.position;     // 目標座標
+        Vector2 posB = transform.position;  // 攝影機座標
 
-        posB = Vector3.Lerp(posB, posA,Time.deltaTime * speed); 
+        posB = Vector2.Lerp(posB, posA,Time.deltaTime * speed); 
         transform.position = posB;  // 設定新攝影機座標
        
     }

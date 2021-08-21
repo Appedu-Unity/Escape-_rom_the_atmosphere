@@ -670,9 +670,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1782709703}
-  speed: 2
-  height: {x: 0, y: 20.65}
-  width: {x: 0, y: 27}
+  speed: 10
 --- !u!1 &1540060564
 GameObject:
   m_ObjectHideFlags: 0
