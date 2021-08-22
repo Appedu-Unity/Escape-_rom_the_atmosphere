@@ -12,7 +12,7 @@ public class MenuManager : MonoBehaviour
     }
     private void DelayStart()
     {
-        SceneManager.LoadScene("遊戲場景");
+        SceneManager.LoadScene("Game");
     }
     /// <summary>
     /// 離開遊戲
