@@ -9,12 +9,13 @@ public class RotateAround : MonoBehaviour
     [Header("旋轉速度")]
     public float speed;
 
+    
     private Vector3 axis = new Vector3(0,0,1);  //旋轉軸
 
     private void Start()
     {
         //搜尋中心點物件
-        centerPoint = GameObject.Find("Ball"); 
+        centerPoint = GameObject.Find("Earth"); 
     }
     void Update()
     {
@@ -23,5 +24,19 @@ public class RotateAround : MonoBehaviour
 
         //以center為圓心以axis為旋轉軸旋轉，速度為speed
         transform.RotateAround(center, axis, speed);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.name == "RockKill")
+        {
+            Player.live--;
+            Destroy(gameObject);
+        }
+        if (collision.name == "Player")
+        {
+            
+            Destroy(gameObject);
+        }
     }
 }

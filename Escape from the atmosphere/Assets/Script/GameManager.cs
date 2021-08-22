@@ -11,33 +11,43 @@ public class GameManager : MonoBehaviour
     public GameObject ball;
     [Header("高度文字")]
     public Text textHigh;
-    public float high;
+    public float high=0.1f;
+    [Header("生命文字")]
+    public Text textLive;
+    [Header("失敗文字")]
+    public GameObject gameOver;
+
 
     void Start()
     {
         player = GameObject.Find("Player");
-        ball = GameObject.Find("Ball");
+        ball = GameObject.Find("Earth");
 
-        //取得高度文字
-        textHigh = GameObject.Find("High").GetComponent<Text>();
-
-        
-    }
-
-    
+    }   
     void Update()
     {
-        High();
+        Text();
+        GameOver();
     }
 
-    
     /// <summary>
-    /// 目前高度
+    /// 目前分數
     /// </summary>
-    private void High()
+    private void Text()
     {
-        high = Mathf.Round(player.transform.position.y - ball.transform.position.y)-4;
-        textHigh.text = high + " M  ";
+        high += 0.01f;
+        textHigh.text = Mathf.Round(high) + " M  ";
+        textLive.text = "   Live : " + Player.live; 
     }
 
+    private void GameOver()
+    {
+        if(Player.live <= 0)
+        {
+            
+            enabled = false;
+            gameOver.SetActive(true);
+        }
+
+    }
 }

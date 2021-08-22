@@ -1,35 +1,45 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [Header("跳躍高度")]
-    public float jump = 5;
-    [Header("踩地板判定")]
-    public bool isGround = true;   
-
+    [Header("節拍點")]
+    public Transform UPUP;
+    public Transform DOWN;
+    [Header("生命值")]
+    static public int live = 3;
     private Rigidbody2D rig;
-
 
     private void Start()
     {
+        live = 3;
         rig = GetComponent<Rigidbody2D>();
     }
     private void Update()
     {
-        Jump(); 
+        Move();
+       
     }
 
 
     /// <summary>
     /// 跳躍
     /// </summary>
-    private void Jump()
+    private void Move()
     {
-        if (isGround && Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W))
         {
-            rig.AddForce(new Vector2(0, jump*100));
+            transform.position = UPUP.position;
+        }
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            transform.position = DOWN.position;
+        }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 
